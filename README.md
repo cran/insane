@@ -5,19 +5,16 @@
 
 <!-- badges: start -->
 
-[![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![GitHub
 tag](https://img.shields.io/github/tag/mcanouil/insane.svg?label=latest%20tag&include_prereleases)](https://github.com/mcanouil/insane)
-[![R build
-status](https://github.com/mcanouil/insane/workflows/R-CMD-check/badge.svg)](https://github.com/mcanouil/insane/actions)
-[![Coverage Status
-(codecov)](https://codecov.io/gh/mcanouil/insane/branch/master/graph/badge.svg)](https://codecov.io/gh/mcanouil/insane)
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version-ago/insane)](https://cran.r-project.org/package=insane)
+[![Codecov test
+coverage](https://codecov.io/gh/mcanouil/insane/branch/main/graph/badge.svg)](https://app.codecov.io/gh/mcanouil/insane/tree/main/)
+[![R-CMD-check](https://github.com/mcanouil/insane/workflows/R-CMD-check/badge.svg)](https://github.com/mcanouil/insane/actions)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version-ago/insane)](https://cran.r-project.org/package=insane)
 [![cran
-checks\_worst](https://cranchecks.info/badges/worst/insane)](https://cran.r-project.org/web/checks/check_results_insane.html)
-[![CRAN\_Download\_total](https://cranlogs.r-pkg.org/badges/insane)](https://cran.r-project.org/package=insane)
-
+checks_worst](https://cranchecks.info/badges/worst/insane)](https://cran.r-project.org/web/checks/check_results_insane.html)
+[![CRAN_Download_total](https://cranlogs.r-pkg.org/badges/insane)](https://cran.r-project.org/package=insane)
+[![DOI](https://zenodo.org/badge/170500704.svg)](https://zenodo.org/badge/latestdoi/170500704)
 <!-- badges: end -->
 
 A user-friendly interface, using Shiny, to analyse glucose-stimulated
@@ -48,6 +45,8 @@ remotes::install_github("mcanouil/insane")
 library("insane")
 go_insane()
 ```
+
+<img src="man/figures/README-insane_app.gif" width="100%" />
 
 ## Overview
 
@@ -81,16 +80,16 @@ projects separately.
 **insane** performs technical quality-control of the optical density
 measured in each steps of the experiments:
 
-  - blank (*BLANK*),
-  - lysat (*LYSATE*),
-  - supernatant (*SUPERNATANT1* and *SUPERNATANT2*).
+- blank (*BLANK*),
+- lysat (*LYSATE*),
+- supernatant (*SUPERNATANT1* and *SUPERNATANT2*).
 
 This technical quality-control step checks:
 
-  - the variability among the duplicated optical density measures of
-    each samples;
-  - the variability in the blank curves (intercept and slope estimates)
-    among all experiments in a project.
+- the variability among the duplicated optical density measures of each
+  samples;
+- the variability in the blank curves (intercept and slope estimates)
+  among all experiments in a project.
 
 <img src="man/figures/README-app_002.png" width="100%" />
 
@@ -104,24 +103,24 @@ A*).
 Conditions are compared using a linear regression with `Date` and
 `Operator` as covariates (if needed) to control for heterogeneity.
 
-  - Using all experiments in the selected project
-    
-      - Boxplot version
-        
-        <img src="man/figures/README-app_003.png" width="65%" />
-    
-      - Histogram version
-        
-        <img src="man/figures/README-app_004.png" width="65%" />
+- Using all experiments in the selected project
 
-  - Using some of the experiments in the selected project
-    
-    <img src="man/figures/README-app_005.png" width="65%" />
+  - Boxplot version
+
+    <img src="man/figures/README-app_003.png" width="65%" />
+
+  - Histogram version
+
+    <img src="man/figures/README-app_004.png" width="65%" />
+
+- Using some of the experiments in the selected project
+
+  <img src="man/figures/README-app_005.png" width="65%" />
 
 If and when some experiments are failing any of the technical
 quality-controls, a summary of the issues regarding the selected
-experiments can be displayed using the button `Show Issues in the
-Selected Experiments`.
+experiments can be displayed using the button
+`Show Issues in the Selected Experiments`.
 
 <img src="man/figures/README-app_006.png" width="50%" /><img src="man/figures/README-app_007.png" width="50%" />
 
@@ -142,8 +141,8 @@ on [github](https://github.com/mcanouil/insane/issues).
 For questions and other discussion, please contact the package
 maintainer.
 
------
+------------------------------------------------------------------------
 
 Please note that this project is released with a [Contributor Code of
-Conduct](https://github.com/mcanouil/insane/blob/master/.github/CODE_OF_CONDUCT.md).  
+Conduct](https://github.com/mcanouil/insane/blob/main/.github/CODE_OF_CONDUCT.md).  
 By participating in this project you agree to abide by its terms.

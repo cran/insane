@@ -15,74 +15,56 @@
 
 <title>insane: Experimental Protocol</title>
 
-<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
-// v0.0.1
-// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
-
-document.addEventListener('DOMContentLoaded', function() {
-  const codeList = document.getElementsByClassName("sourceCode");
-  for (var i = 0; i < codeList.length; i++) {
-    var linkList = codeList[i].getElementsByTagName('a');
-    for (var j = 0; j < linkList.length; j++) {
-      if (linkList[j].innerHTML === "") {
-        linkList[j].setAttribute('aria-hidden', 'true');
-      }
-    }
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
   }
 });
 </script>
+
 <style type="text/css">
-a.anchor-section {margin-left: 10px; visibility: hidden; color: inherit;}
-a.anchor-section::before {content: '#';}
-.hasAnchor:hover a.anchor-section {visibility: visible;}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
 </style>
-<script>// Anchor sections v1.0 written by Atsushi Yasumoto on Oct 3rd, 2020.
-document.addEventListener('DOMContentLoaded', function() {
-  // Do nothing if AnchorJS is used
-  if (typeof window.anchors === 'object' && anchors.hasOwnProperty('hasAnchorJSLink')) {
-    return;
-  }
 
-  const h = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
 
-  // Do nothing if sections are already anchored
-  if (Array.from(h).some(x => x.classList.contains('hasAnchor'))) {
-    return null;
-  }
 
-  // Use section id when pandoc runs with --section-divs
-  const section_id = function(x) {
-    return ((x.classList.contains('section') || (x.tagName === 'SECTION'))
-            ? x.id : '');
-  };
 
-  // Add anchors
-  h.forEach(function(x) {
-    const id = x.id || section_id(x.parentElement);
-    if (id === '') {
-      return null;
-    }
-    let anchor = document.createElement('a');
-    anchor.href = '#' + id;
-    anchor.classList = ['anchor-section'];
-    x.classList.add('hasAnchor');
-    x.appendChild(anchor);
-  });
-});
-</script>
+
 
 <style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
 
-
-
-
+div.csl-bib-body { }
+div.csl-entry {
+clear: both;
+}
+.hanging div.csl-entry {
+margin-left:2em;
+text-indent:-2em;
+}
+div.csl-left-margin {
+min-width:2em;
+float:left;
+}
+div.csl-right-inline {
+margin-left:2em;
+padding-left:1em;
+}
+div.csl-indent {
+margin-left: 2em;
+}
+</style>
 
 <style type="text/css">body {
 background-color: #fff;
@@ -286,36 +268,79 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h3>Experimental Protocol</h3>
 <div id="culture-of-endoc-βh1-cells" class="section level4">
 <h4>Culture of EndoC-βH1 cells</h4>
-<p>EndoC-βH1 cells are cultured in Optiβ medium (Univercell). Cells are seeded at a density of 2.5 × 10<sup>6</sup> in T25 flasks coated with β-coat (Univercell) according to manufacturer’s instructions, and cultured at 37 °C and 5 % CO2.</p>
+<p>EndoC-βH1 cells are cultured in Optiβ medium (Univercell). Cells are
+seeded at a density of 2.5 × 10<sup>6</sup> in T25 flasks coated with
+β-coat (Univercell) according to manufacturer’s instructions, and
+cultured at 37 °C and 5 % CO2.</p>
 </div>
 <div id="transfection-of-sirna-into-endoc-βh1-cells" class="section level4">
 <h4>Transfection of siRNA into EndoC-βH1 cells</h4>
-<p>In case of transfection, siRNAs are transfected into EndoC-βH1 cells using Lipofectamine 2000 (Invitrogen).<br />
-Freshly trypsinized EndoC-βH1 (0.5 × 10<sup>6</sup> cells) are incubated in suspension with Lipofectamine-siRNA complex in Opti-MEM (Invitrogen) containing 50 μM 2-mercaptoethanol, 10 mM nicotinamide (Calbiochem, Merck Millipore), 5.5 mg/ml human transferrin (Sigma-Aldrich), 6.7 ng/ml sodium selenite (Sigma-Aldrich), 100 U/ml penicillin and 100 mg/ml streptomycin (Life Technologies) for 10 minutes and then are plated onto culture wells coated with β-oat (Univercell).<br />
+<p>In case of transfection, siRNAs are transfected into EndoC-βH1 cells
+using Lipofectamine 2000 (Invitrogen).<br />
+Freshly trypsinized EndoC-βH1 (0.5 × 10<sup>6</sup> cells) are incubated
+in suspension with Lipofectamine-siRNA complex in Opti-MEM (Invitrogen)
+containing 50 μM 2-mercaptoethanol, 10 mM nicotinamide (Calbiochem,
+Merck Millipore), 5.5 mg/ml human transferrin (Sigma-Aldrich), 6.7 ng/ml
+sodium selenite (Sigma-Aldrich), 100 U/ml penicillin and 100 mg/ml
+streptomycin (Life Technologies) for 10 minutes and then are plated onto
+culture wells coated with β-oat (Univercell).<br />
 Six hours later, the medium is replaced.<br />
-We previously used ON-TARGETplus siRNA SMARTpool for each gene of interest (20-30 nM) and ON-TARGETplus nontargeting pool for controls (siNTP; Dharmacon, Thermo Fisher Scientific, Waltham, MA, USA) <span class="citation">(Ndiaye et al. <a href="#ref-ndiaye_expression_2017" role="doc-biblioref">2017</a>)</span>.<br />
+We previously used ON-TARGETplus siRNA SMARTpool for each gene of
+interest (20-30 nM) and ON-TARGETplus nontargeting pool for controls
+(siNTP; Dharmacon, Thermo Fisher Scientific, Waltham, MA, USA) <span class="citation">(<a href="#ref-ndiaye_expression_2017" role="doc-biblioref">Ndiaye et al. 2017</a>)</span>.<br />
 Cells are analyzed 72 hours post transfection.</p>
 </div>
 <div id="assessment-of-insulin-secretion-from-endoc-βh1-cells" class="section level4">
 <h4>Assessment of insulin secretion from EndoC-βH1 cells</h4>
-<p>EndoC-βH1 cells seeded onto β-coat-coated 96-well plates at 5 × 10<sup>4</sup> cells/well are incubated overnight in no glucose Dulbecco’s Modified Eagle’s Medium (Sigma Aldrich) supplemented with 2 % BSA Fraction V, 50 μM 2-mercaptoethanol, 10 mM nicotinamide (Calbiochem, Merck Millipore), 5.5 mg/ml human transferrin (Sigma-Aldrich), 6.7 ng/ml sodium selenite (Sigma-Aldrich), 100 U/ml penicillin and 100 mg/ml streptomycin (Life Technologies) and that contained 2.8 mM glucose.<br />
-The day after, they are incubated in HEPES-buffered Krebs-Ringer Buffer (KRB; 116 mmol/l NaCl, 5.06 mmol/l KCl, 1.007 mmol/l CaCl2, 1.01 mmol/l MgCl2, 23.96 mmol/l NaHCO3, 10 mmol/l HEPES, pH 7.4, and 0.1 % BSA solution) that contained 0.5 mM glucose ± 0.5 mM IBMX (Sigma Aldrich) for 60 minutes at 37 °C.<br />
-This supernatant is subsequently collected (supernatant 1 [SN1]) and replaced with 16.7 mM glucose KRB ± 0.5 mM IBMX for a 60-minute incubation at 37 °C and then collected (supernatant 2 [SN2]).<br />
-For insulin content measurement, cells are lysed with TETG buffer (20 mM Tris-HCl pH 8.0, 137 mM NaCl, 1 % Triton X-100, 10 % Glycerol, 2 mM EGTA with protease inhibitors; Roche).<br />
+<p>EndoC-βH1 cells seeded onto β-coat-coated 96-well plates at
+5 × 10<sup>4</sup> cells/well are incubated overnight in no glucose
+Dulbecco’s Modified Eagle’s Medium (Sigma Aldrich) supplemented with 2 %
+BSA Fraction V, 50 μM 2-mercaptoethanol, 10 mM nicotinamide (Calbiochem,
+Merck Millipore), 5.5 mg/ml human transferrin (Sigma-Aldrich), 6.7 ng/ml
+sodium selenite (Sigma-Aldrich), 100 U/ml penicillin and 100 mg/ml
+streptomycin (Life Technologies) and that contained 2.8 mM
+glucose.<br />
+The day after, they are incubated in HEPES-buffered Krebs-Ringer Buffer
+(KRB; 116 mmol/l NaCl, 5.06 mmol/l KCl, 1.007 mmol/l CaCl2, 1.01 mmol/l
+MgCl2, 23.96 mmol/l NaHCO3, 10 mmol/l HEPES, pH 7.4, and 0.1 % BSA
+solution) that contained 0.5 mM glucose ± 0.5 mM IBMX (Sigma Aldrich)
+for 60 minutes at 37 °C.<br />
+This supernatant is subsequently collected (supernatant 1 [SN1]) and
+replaced with 16.7 mM glucose KRB ± 0.5 mM IBMX for a 60-minute
+incubation at 37 °C and then collected (supernatant 2 [SN2]).<br />
+For insulin content measurement, cells are lysed with TETG buffer (20 mM
+Tris-HCl pH 8.0, 137 mM NaCl, 1 % Triton X-100, 10 % Glycerol, 2 mM EGTA
+with protease inhibitors; Roche).<br />
 Lysate, SN1 and SN2 are centrifuged for 5 minutes at 700 g.<br />
 Samples are kept frozen at -20 °C before use.<br />
-Insulin concentration in the supernatants and intracellular content of the EndoC-βH1 cells are measured by ELISA according to manufacturer’s instructions using the Human Insulin Kit (Mercodia, Uppsala, Sweden).<br />
-Briefly, 25 µl of either blank, standard (from 0.2 to 6 µg/ml), or diluted samples (1:400 for lysates and 1:16 for supernatants) and 100 µl 1X conjugate enzyme are put in the 96-well plate coated with insulin antibody for 1 hour under agitation at room temperature.<br />
+Insulin concentration in the supernatants and intracellular content of
+the EndoC-βH1 cells are measured by ELISA according to manufacturer’s
+instructions using the Human Insulin Kit (Mercodia, Uppsala,
+Sweden).<br />
+Briefly, 25 µl of either blank, standard (from 0.2 to 6 µg/ml), or
+diluted samples (1:400 for lysates and 1:16 for supernatants) and 100 µl
+1X conjugate enzyme are put in the 96-well plate coated with insulin
+antibody for 1 hour under agitation at room temperature.<br />
 The plate is then washed six times with wash buffer 1X solution.<br />
-Then, 200 µl substrate is added in the plate for a 15-minute incubation.<br />
-Then, 50 µl stop solution is added and the absorbance at 450 nm is measured, using technical duplicates of experimental triplicates, leading to six measurements per experimental conditions (that are subsequently repeated).</p>
-<p><em>Note</em>: absorbance values need to be written within the Excel template provided by the <strong>insane</strong> package.</p>
+Then, 200 µl substrate is added in the plate for a 15-minute
+incubation.<br />
+Then, 50 µl stop solution is added and the absorbance at 450 nm is
+measured, using technical duplicates of experimental triplicates,
+leading to six measurements per experimental conditions (that are
+subsequently repeated).</p>
+<p><em>Note</em>: absorbance values need to be written within the Excel
+template provided by the <strong>insane</strong> package.</p>
 </div>
 <div id="references" class="section level4 unnumbered">
-<h4>References</h4>
-<div id="refs" class="references">
-<div id="ref-ndiaye_expression_2017">
-<p>Ndiaye, Fatou K., Ana Ortalli, Mickaël Canouil, Marlène Huyvaert, Clara Salazar-Cardozo, Cécile Lecoeur, Marie Verbanck, et al. 2017. “Expression and Functional Assessment of Candidate Type 2 Diabetes Susceptibility Genes Identify Four New Genes Contributing to Human Insulin Secretion.” <em>Molecular Metabolism</em> 6 (6): 459–70. <a href="https://doi.org/10.1016/j.molmet.2017.03.011">https://doi.org/10.1016/j.molmet.2017.03.011</a>.</p>
+<h4 class="unnumbered">References</h4>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-ndiaye_expression_2017" class="csl-entry">
+Ndiaye, Fatou K., Ana Ortalli, Mickaël Canouil, Marlène Huyvaert, Clara
+Salazar-Cardozo, Cécile Lecoeur, Marie Verbanck, et al. 2017.
+<span>“Expression and Functional Assessment of Candidate Type 2 Diabetes
+Susceptibility Genes Identify Four New Genes Contributing to Human
+Insulin Secretion.”</span> <em>Molecular Metabolism</em> 6 (6): 459–70.
+<a href="https://doi.org/10.1016/j.molmet.2017.03.011">https://doi.org/10.1016/j.molmet.2017.03.011</a>.
 </div>
 </div>
 </div>
