@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -9,7 +9,7 @@ knitr::opts_chunk$set(
 ## ----logo, echo = FALSE, out.width = "150px", fig.align = "center"------------
 knitr::include_graphics(path = "insane.png")
 
-## ---- eval = FALSE------------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  # Install insane from CRAN:
 #  install.packages("insane")
 #  
@@ -17,28 +17,28 @@ knitr::include_graphics(path = "insane.png")
 #  # install.packages("remotes")
 #  remotes::install_github("mcanouil/insane")
 
-## ---- eval = FALSE------------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  library("insane")
 #  go_insane()
 
-## ---- echo = FALSE------------------------------------------------------------
+## ----echo = FALSE-------------------------------------------------------------
 knitr::include_graphics("README-app_001.png")
 
-## ---- echo = FALSE------------------------------------------------------------
+## ----echo = FALSE-------------------------------------------------------------
 knitr::include_graphics("README-app_002.png")
 
-## ---- echo = FALSE, out.width = "50%"-----------------------------------------
+## ----echo = FALSE, out.width = "50%"------------------------------------------
 knitr::include_graphics("README-app_003.png")
 
-## ---- echo = FALSE, out.width = "50%"-----------------------------------------
+## ----echo = FALSE, out.width = "50%"------------------------------------------
 knitr::include_graphics("README-app_004.png")
 
-## ---- echo = FALSE, out.width = "50%"-----------------------------------------
+## ----echo = FALSE, out.width = "50%"------------------------------------------
 knitr::include_graphics("README-app_005.png")
 
-## ---- echo = FALSE------------------------------------------------------------
+## ----echo = FALSE-------------------------------------------------------------
 knitr::include_graphics("README-app_006.png")
 
-## ---- echo = FALSE------------------------------------------------------------
+## ----echo = FALSE-------------------------------------------------------------
 knitr::include_graphics("README-app_007.png")
 
